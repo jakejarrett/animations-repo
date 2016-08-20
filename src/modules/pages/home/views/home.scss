@@ -1,0 +1,122 @@
+/** Styles **/
+.homepage {
+  margin-top: 30px;
+
+  .card {
+    cursor: pointer;
+    border-color: transparent;
+
+    transition: all .5s ease-in-out;
+
+    &>.card-block {
+      position: relative;
+      z-index: 2;
+
+      .card-title, .card-text {
+        transform-origin: center;
+        transform: scale(1) translate(0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .card-text-expanded {
+        opacity: 0;
+        height: 0;
+      }
+    }
+
+    &>.card-background {
+      border: 1px solid transparent;
+      background: #ffdbff;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      transform-origin: center;
+      transform: scale(1) translate(0);
+      transition: all .25s ease-in-out;
+    }
+
+    &>.expanded {
+      z-index: 3;
+      transition: all .25s ease-in-out;
+      will-change: transform;
+      cursor: default;
+
+      @media (min-width: 545px) {
+        transform: scale(3) scaleX(3) scaleY(4) !important;
+      }
+
+      @media (max-width: 544px) {
+        transform: scale(5) !important;
+      }
+    }
+  }
+
+  .expanded-card {
+    border: 1px solid transparent;
+    cursor: default !important;
+    transition: all .5s ease-in-out;
+    overflow: visible !important;
+
+    $translateX: 130%;
+
+    @media (min-width: 545px) {
+      &>.card-block {
+        z-index: 4;
+
+        .card-title {
+          transition: all 0.3s ease-in-out;
+          transform: translateX($translateX + 30) !important;
+          will-change: transform;
+          cursor: text;
+        }
+
+        .card-text {
+          transition: all 0.3s ease-in-out;
+          backface-visibility: hidden;
+          transform: perspective(1px) translateX($translateX + .5) translateY(60%) !important;
+          will-change: transform;
+          cursor: text;
+        }
+
+        .card-text-expanded {
+          height: auto;
+          transition: all 0.3s ease-in-out;
+          opacity: 1;
+        }
+      }
+    }
+
+    @media (max-width: 544px) {
+
+      &>.card-block {
+        z-index: 4;
+
+        .card-title {
+          transition: all 0.3s ease-in-out;
+          transform: translateY(50%) translateX(35%) !important;
+          will-change: transform;
+          cursor: text;
+        }
+
+        .card-text {
+          transition: all 0.3s ease-in-out;
+          backface-visibility: hidden;
+          transform: perspective(1px) translateY(30px) translateX(40px) !important;
+          width: 90%;
+          will-change: transform;
+          cursor: text;
+          margin-bottom: 10px;
+        }
+
+        .card-text-expanded {
+          height: auto;
+          transition: all 0.3s ease-in-out;
+          opacity: 1;
+        }
+      }
+    }
+
+  }
+}

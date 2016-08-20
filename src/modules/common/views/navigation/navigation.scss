@@ -1,0 +1,9 @@
+.navbar {
+  border-radius: 0;
+}
+
+@media screen and (max-width: 544px) {
+  .form-inline {
+    display: none;
+  }
+}

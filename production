@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# This is mainly for testing purposes, This will only run node under production under the context of this
+# bash script.
+function setProductionEnvironments {
+    # Set environment as production
+    echo "export NODE_ENV=production";
+    export NODE_ENV=production
+
+    # Set port as 1337
+    echo "export PORT=1337"
+    export PORT=1337
+}
+
+# Build webpack
+function buildWebpackProduction {
+    echo "Building webpack production config";
+
+    echo "webpack -p --config webpack.production.config.js";
+    webpack -p --config webpack.production.config.js
+}
+
+# Serve Webpack
+function serveWebpackProduction {
+    echo "Starting production server";
+
+    echo "npm start";
+    npm start
+}
+
+setProductionEnvironments
+buildWebpackProduction
+serveWebpackProduction
